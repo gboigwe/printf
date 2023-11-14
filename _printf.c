@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 	va_list compile;
 	va_start(compile, format);
 
-	while (*format != '\0')
+	for (ls = 0; *format != '\0'; ls++)
 	{
 		if (*format == '%')
 		{
@@ -19,34 +19,24 @@ int _printf(const char *format, ...)
 			{
 				char val = va_arg(compile, int);
 				_putchar(val);
-				ls++;
 			}
 			else if (*(format + 1) == 's')
 			{
-				const char *cha = va_arg(compile, const char *);
-				while (*cha != '\0')
-				{
-					_putchar(*cha);
-					cha++;
-					ls++;
-				}
+				_strlen(va_arg(compile, int);
 			}
 			else if (*(format + 1) == '%')
 			{
 				_putchar('%');
-				ls++;
 			}
 			else
 			{
 				_putchar('%');
-				ls++;
 			}
 			format += 2;
 		}
 		else
 		{
 			_putchar(*format);
-			ls++;
 			format++;
 		}
 	}
