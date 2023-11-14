@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*(format + 1) == 's')
 			{
-				_strlen(va_arg(compile, int));
+				_strlen(va_arg(compile, char *));
 			}
 			else if (*(format + 1) == '%')
 			{
