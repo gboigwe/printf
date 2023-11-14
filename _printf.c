@@ -8,7 +8,9 @@
 int _printf(const char *format, ...)
 {
 	int ls;
+
 	va_list compile;
+
 	va_start(compile, format);
 
 	for (ls = 0; *format != '\0'; ls++)
@@ -18,6 +20,7 @@ int _printf(const char *format, ...)
 			if (*(format + 1) == 'c')
 			{
 				char val = va_arg(compile, int);
+
 				_putchar(val);
 			}
 			else if (*(format + 1) == 's')
