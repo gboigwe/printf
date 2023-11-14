@@ -6,19 +6,19 @@
  */
 int _printf(const char * const format, ...)
 {
-	all_compile m[] = {
-		{"%s", string_prnt}, {"%c", char_prnt},
-		{"%%", nu_prnt},
-		{"%i", int_print}, {"%d", dec_print}, {"%r", revs_prnt},
-		{"%R", rot13_prnt}, {"%b", bin_prnt}, {"%u", unsign_prnt},
-		{"%o", octal_print}, {"%x", hex_prnt}, {"%X", hex_prnt},
-		{"%S", exclu_str_prnt}, {"%p", point_prnt}
+	convert_match m[] = {
+		{"%s", printf_string}, {"%c", printf_char},
+		{"%%", printf_37},
+		{"%i", printf_int}, {"%d", printf_dec}, {"%r", printf_srev},
+		{"%R", printf_rot13}, {"%b", printf_bin}, {"%u", printf_unsigned},
+		{"%o", printf_oct}, {"%x", printf_hex}, {"%X", printf_HEX},
+		{"%S", printf_exclusive_string}, {"%p", printf_pointer}
 	};
 
-	va_list compile;
-	int i = 0, j, lent = 0;
+	va_list args;
+	int i = 0, j, len = 0;
 
-	va_start(compile, format);
+	va_start(args, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 
@@ -30,16 +30,16 @@ Here:
 		{
 			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
 			{
-				lent += m[j].f(compile);
+				len += m[j].f(args);
 				i = i + 2;
 				goto Here;
 			}
 			j--;
 		}
 		_putchar(format[i]);
-		lent++;
+		len++;
 		i++;
 	}
-	va_end(compile);
-	return (lent);
+	va_end(args);
+	return (len);
 }

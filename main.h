@@ -10,38 +10,39 @@
 
 
 /**
- * struct format - The conversion specifiers for printf all matched
- * @fmt_id: type char pointer of the conversation specifier
- * @fn: The function to pointer for conversion specifier
+ * struct format - match the conversion specifiers for printf
+ * @id: type char pointer of the specifier i.e (l, h) for (d, i, u, o, x, X)
+ * @f: type pointer to function for the conversion specifier
  *
  */
 
-typedef struct fmting
+typedef struct format
 {
-	char *fmt_id;
-	int (*fn)();
-} all_compile;
+	char *id;
+	int (*f)();
+} convert_match;
 
-int point_prnt(va_list value);
-// int printf_hex_aux(unsigned long int num);
-int hexaux_prnt(unsigned int nums);
-int hex_prnt(va_list value);
-int exclu_str_prnt(va_list value);
-int hexaux_prnt(unsigned int nums);
-int octal_print(va_list value);
-int unsign_prnt(va_list param);
-int bin_prnt(va_list value);
-int revs_prnt(va_list param);
-int rot13_prnt(va_list param);
-int int_print(va_list param);
-int dec_print(va_list param);
+int printf_pointer(va_list val);
+int printf_hex_aux(unsigned long int num);
+int printf_HEX_aux(unsigned int num);
+int printf_exclusive_string(va_list val);
+int printf_HEX(va_list val);
+int printf_hex(va_list val);
+int printf_oct(va_list val);
+int printf_unsigned(va_list args);
+int printf_bin(va_list val);
+int printf_srev(va_list args);
+int printf_rot13(va_list args);
+int printf_int(va_list args);
+int printf_dec(va_list args);
 int _strlen(char *s);
-int _strlentc(const char *s);
 int *_strcpy(char *dest, char *src);
+int _strlenc(const char *s);
 int rev_string(char *s);
-int nu_prnt(void);
-int char_prnt(va_list value);
-int string_prnt(va_list value);
+int _strlenc(const char *s);
+int printf_37(void);
+int printf_char(va_list val);
+int printf_string(va_list val);
 int _putchar(char c);
 int _printf(const char *format, ...);
 
