@@ -1,4 +1,3 @@
-#include <stdarg.h>
 #include "main.h"
 /**
  * _printf - The function that writes output to std
